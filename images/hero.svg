@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="t">
+  <title id="t">Stick-figure illustration wearing a hacker mask, with blinking animated eyes</title>
+  <rect width="800" height="1000" fill="#D0C7BB"/>
+
+  <!-- ground line, line-art style like a stickman sketch -->
+  <line x1="120" y1="860" x2="680" y2="860" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- subtle idle sway, SMIL animation only (no JS needed/allowed) -->
+  <g transform-origin="400 560">
+    <animateTransform attributeName="transform" type="rotate"
+      values="-1.5 400 560; 1.5 400 560; -1.5 400 560" dur="4s" repeatCount="indefinite"/>
+
+    <!-- legs -->
+    <path d="M400 620 L330 850" stroke="#111111" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M400 620 L470 850" stroke="#111111" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <!-- feet -->
+    <path d="M330 850 L290 860" stroke="#111111" stroke-width="10" stroke-linecap="round"/>
+    <path d="M470 850 L510 860" stroke="#111111" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- body (hoodie torso, flat shape) -->
+    <path d="M330 380 Q400 350 470 380 L490 630 Q400 660 310 630 Z" fill="#111111"/>
+
+    <!-- arms -->
+    <path d="M335 410 L210 520" stroke="#111111" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M465 410 L560 330" stroke="#D94313" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <!-- hands -->
+    <circle cx="210" cy="520" r="14" fill="#111111"/>
+    <circle cx="560" cy="330" r="14" fill="#D94313"/>
+
+    <!-- hood -->
+    <path d="M320 390 Q400 300 480 390 Q470 330 400 320 Q330 330 320 390Z" fill="#111111"/>
+
+    <!-- head -->
+    <circle cx="400" cy="300" r="78" fill="#D0C7BB" stroke="#111111" stroke-width="8"/>
+
+    <!-- hacker mask (balaclava), eye-holes only -->
+    <path d="M330 250 Q400 220 470 250 L470 330 Q400 360 330 330 Z" fill="#111111"/>
+    <!-- eye slits, orange accent, with a blink loop -->
+    <rect x="352" y="288" width="26" height="10" rx="5" fill="#D94313">
+      <animate attributeName="height" values="10;1;10" keyTimes="0;0.5;1" dur="3.6s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="288;292;288" keyTimes="0;0.5;1" dur="3.6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="422" y="288" width="26" height="10" rx="5" fill="#D94313">
+      <animate attributeName="height" values="10;1;10" keyTimes="0;0.5;1" dur="3.6s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="288;292;288" keyTimes="0;0.5;1" dur="3.6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- label, matching the site's mono type feel -->
+  <text x="400" y="950" text-anchor="middle" font-family="monospace" font-size="22" fill="#4a443e">// placeholder hero artwork — swap for your own photo anytime</text>
+</svg>
