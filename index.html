@@ -54,6 +54,43 @@
 
 <!-- ================= SECTION 02: ABOUT ================= -->
 <section id="about">
+  <!-- Decorative hanging monkey (same flat ink + orange style as the hero art). Safe to delete. -->
+  <svg class="about-monkey" viewBox="0 0 140 230" aria-hidden="true" focusable="false">
+    <g class="monkey-swing">
+      <!-- rope from the top edge of the section -->
+      <line x1="70" y1="0" x2="70" y2="46" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+      <!-- tail (curls and sways a little on its own) -->
+      <path class="monkey-tail" d="M76 176 C112 180 124 208 104 218 C93 223 86 212 95 207" fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round"/>
+      <!-- legs -->
+      <path d="M63 172 L56 206" stroke="#111111" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path d="M79 172 L84 204" stroke="#111111" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <ellipse cx="52" cy="210" rx="10" ry="5" fill="#111111"/>
+      <ellipse cx="88" cy="208" rx="10" ry="5" fill="#111111"/>
+      <!-- body -->
+      <ellipse cx="70" cy="150" rx="21" ry="29" fill="#111111"/>
+      <!-- arm holding the rope -->
+      <path d="M84 130 Q94 86 70 50" stroke="#111111" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <circle cx="70" cy="47" r="8" fill="#111111"/>
+      <!-- free arm holding a banana in the orange accent -->
+      <path d="M56 132 Q38 142 32 162" stroke="#111111" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path d="M12 146 Q12 184 42 178 Q22 172 12 146Z" fill="#D94313" stroke="#D94313" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="32" cy="163" r="6.5" fill="#111111"/>
+      <!-- head -->
+      <circle cx="43" cy="106" r="9" fill="#111111"/><circle cx="43" cy="106" r="4.5" fill="#D0C7BB"/>
+      <circle cx="89" cy="106" r="9" fill="#111111"/><circle cx="89" cy="106" r="4.5" fill="#D0C7BB"/>
+      <circle cx="66" cy="108" r="23" fill="#111111"/>
+      <!-- face patch, in the page colour -->
+      <circle cx="58.5" cy="102" r="8" fill="#D0C7BB"/>
+      <circle cx="73.5" cy="102" r="8" fill="#D0C7BB"/>
+      <ellipse cx="66" cy="113" rx="14" ry="11" fill="#D0C7BB"/>
+      <!-- eyes (blink) -->
+      <ellipse class="monkey-eye" cx="60" cy="104" rx="2.8" ry="3" fill="#111111"/>
+      <ellipse class="monkey-eye" cx="72" cy="104" rx="2.8" ry="3" fill="#111111"/>
+      <!-- nose and smile -->
+      <circle cx="64" cy="113" r="1.2" fill="#111111"/><circle cx="68" cy="113" r="1.2" fill="#111111"/>
+      <path d="M59 119 Q66 125 73 119" stroke="#111111" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    </g>
+  </svg>
   <div class="split">
     <div class="about-text">
       <p class="label">About me</p>
@@ -231,11 +268,11 @@
         <li><a href="https://github.com/immhackerx" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://www.instagram.com/priyanshhu.who/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
-      <a class="btn" href="mailto:your.email@example.com">Send me a message</a>
+      <a class="btn" href="mailto:priyanshupriya9033e@gmail.com">Send me a message</a>
     </div>
-    <!-- IFRAME: OpenStreetMap embed. To use your own place: openstreetmap.org > Share > HTML, copy the src URL here. -->
-    <iframe title="Map showing where I am based" loading="lazy"
-      src="https://www.openstreetmap.org/export/embed.html?bbox=-20%2C-50%2C60%2C60&amp;layer=mapnik"></iframe>
+    <!-- IFRAME: map of IIIT Raichur (transit campus, GEC Yermarus Camp). To change the place: edit the q= text in the src URL. -->
+    <iframe title="Map showing IIIT Raichur, where I study" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=Indian+Institute+of+Information+Technology+Raichur,+Yermarus+Camp,+Raichur,+Karnataka&amp;z=15&amp;output=embed"></iframe>
   </div>
 </section>
 
