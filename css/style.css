@@ -49,7 +49,22 @@ section{padding:clamp(4rem,10vw,8rem) var(--pad);border-top:1px solid rgba(17,17
 .hero-text{position:relative;z-index:2;grid-column:1/-1;grid-row:1;align-self:end}
 .hero-photo{grid-column:2;grid-row:1;position:absolute;inset:0 0 0 45%;margin:0}
 .hero-photo img{width:100%;height:100%;object-fit:cover}
-#hero h1{font-size:clamp(3.5rem,14vw,12rem);color:var(--accent);margin-bottom:1.5rem;mix-blend-mode:multiply;animation:rise .9s ease both}
+#hero h1{font-size:clamp(3.5rem,14vw,12rem);color:var(--accent);margin-bottom:1.5rem;mix-blend-mode:multiply}
+/* letter-by-letter reveal: each <span> in the h1 fades/rises in with its own delay */
+#hero h1 span{display:inline-block;opacity:0;transform:translateY(.5em);animation:letter-in .6s cubic-bezier(.2,.8,.2,1) forwards}
+#hero h1 span:nth-child(1){animation-delay:.05s}
+#hero h1 span:nth-child(2){animation-delay:.11s}
+#hero h1 span:nth-child(3){animation-delay:.17s}
+#hero h1 span:nth-child(4){animation-delay:.23s}
+#hero h1 span:nth-child(5){animation-delay:.29s}
+#hero h1 span:nth-child(6){animation-delay:.35s}
+#hero h1 span:nth-child(7){animation-delay:.41s}
+#hero h1 span:nth-child(8){animation-delay:.47s}
+#hero h1 span:nth-child(9){animation-delay:.53s}
+#hero h1 span:nth-child(10){animation-delay:.59s}
+#hero h1 span:nth-child(11){animation-delay:.65s}
+#hero h1 span:nth-child(12){animation-delay:.71s}
+@keyframes letter-in{to{opacity:1;transform:translateY(0)}}
 .hero-text p{font-size:1.25rem;color:var(--ink);font-weight:600;max-width:26ch}
 .hero-meta{list-style:none;padding:0;margin:0 0 1.5rem}
 .hero-meta li::before{content:"";display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:var(--accent);margin-right:.6rem}
@@ -91,6 +106,16 @@ section{padding:clamp(4rem,10vw,8rem) var(--pad);border-top:1px solid rgba(17,17
 @keyframes monkey-tail{0%,100%{transform:rotate(7deg)}50%{transform:rotate(-9deg)}}
 @keyframes monkey-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
 
+/* ===== 6c. OWL (decorative, Education section) — small, perched top-LEFT, stays put =====
+   Plays a one-time settle-in on load (creature-in), then idles forever with a small sway + blink. */
+#education{position:relative;overflow:visible}
+.edu-owl{position:absolute;top:1rem;left:var(--pad);width:58px;height:auto;pointer-events:none;z-index:1;
+  animation:creature-in .9s ease-out .1s both}
+.owl-sway{transform-box:view-box;transform-origin:17px 92px;animation:owl-sway 5s ease-in-out infinite}
+.owl-eye{transform-box:fill-box;transform-origin:center;animation:owl-blink 4.4s infinite}
+@keyframes owl-sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes owl-blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.1)}}
+
 /* ===== 7. TABLE ===== */
 .table-wrap{overflow-x:auto;margin-top:2.5rem}
 table{width:100%;border-collapse:collapse;min-width:680px}
@@ -104,7 +129,9 @@ td:nth-child(4){color:var(--accent);font-weight:700;white-space:nowrap}
 
 /* ===== 8. SKILLS ===== */
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.5rem;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
-.skill-box{padding:1.8rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.skill-box{padding:1.8rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  transition:transform .3s ease,box-shadow .3s ease;position:relative}
+.skill-box:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(17,17,17,.14);z-index:2}
 .skill-box ul{padding-left:1.1rem;margin:0;color:var(--muted)}
 .skill-box li{padding:.25rem 0}
 .skill-box li::marker,.learn li::marker{color:var(--accent);font-weight:700}
@@ -114,12 +141,24 @@ td:nth-child(4){color:var(--accent);font-weight:700;white-space:nowrap}
 .learn ol{padding-left:1.3rem;margin:0}
 .learn li{padding:.3rem 0}
 
+/* ===== 8b. ROBOT (decorative, Skills section) — bigger, bottom-RIGHT, bobs in place =====
+   Same pattern: settle in once, then idle forever with a small bob + blink + antenna pulse. */
+#skills{position:relative;overflow:visible}
+.skills-bot{position:absolute;bottom:1.5rem;right:var(--pad);width:86px;height:auto;pointer-events:none;z-index:1;
+  animation:creature-in .9s ease-out .3s both}
+.bot-bob{transform-box:view-box;transform-origin:center;animation:bot-bob 3.4s ease-in-out infinite}
+.bot-antenna{animation:bot-pulse 1.8s ease-in-out infinite}
+.bot-eye{transform-box:fill-box;transform-origin:center;animation:bot-blink 4s infinite}
+@keyframes bot-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes bot-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes bot-blink{0%,88%,100%{transform:scaleY(1)}92%{transform:scaleY(.15)}}
+
 /* ===== 9. PROJECTS (editorial layout) ===== */
 .project{display:grid;grid-template-columns:repeat(12,1fr);gap:1.5rem;align-items:center;margin-top:4rem}
 .frame{grid-column:1/8;overflow:hidden;margin:0;background:var(--surface);display:flex;align-items:center}
 .frame img{width:100% !important;height:auto !important;max-width:100% !important;aspect-ratio:auto !important;
   object-fit:contain !important;transition:transform .5s}
-.frame:hover img{transform:scale(1.04)}
+.frame:hover img{transform:scale(1.04) rotate(-.4deg)}
 .info{grid-column:8/13}
 .project.flip .frame{grid-column:7/13;grid-row:1}
 .project.flip .info{grid-column:1/6;grid-row:1}
@@ -129,6 +168,20 @@ td:nth-child(4){color:var(--accent);font-weight:700;white-space:nowrap}
 .tags li{font:400 .75rem var(--label);border:1px solid var(--ink);border-radius:999px;padding:.2rem .7rem}
 .status{color:var(--accent);font-weight:700}
 
+/* ===== 9b. ROCKET (decorative, Projects section) — largest, fixed top-RIGHT =====
+   A straight-line sideways drift doesn't read as a rocket, so that's gone. Instead: it rises up
+   into place once when the page loads (rocket-launch-in), then just hovers on the spot with a
+   small bob and a flickering flame — the part that actually looks alive on a rocket. */
+#projects{position:relative;overflow:visible}
+.projects-rocket{position:absolute;top:1.5rem;right:var(--pad);width:90px;height:auto;pointer-events:none;z-index:1;
+  animation:rocket-launch-in 1.1s cubic-bezier(.2,.8,.2,1) .2s both}
+.rocket-float{transform-box:view-box;transform-origin:center;animation:rocket-float 2.6s ease-in-out infinite}
+.rocket-flame,.rocket-flame-inner{transform-box:fill-box;transform-origin:50% 0%;animation:rocket-flicker .35s ease-in-out infinite alternate}
+@keyframes rocket-float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes rocket-flicker{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+/* one-time entrance: rises up from below into resting position, like it just launched into frame */
+@keyframes rocket-launch-in{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+
 /* ===== 10. BEYOND THE SCREEN ===== */
 #beyond{text-align:center;padding-bottom:5rem}
 #beyond img{width:min(1000px,100%);margin:2rem auto}
@@ -137,19 +190,63 @@ td:nth-child(4){color:var(--accent);font-weight:700;white-space:nowrap}
 .interests{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;list-style:none;padding:0;margin:2rem 0 0}
 
 /* ===== 11. CONTACT & FOOTER ===== */
+/* smallest of the four, fixed bottom-LEFT.
+   A nonstop diagonal sweep gets tiring to watch, so that's gone too. Instead: it flies in once
+   from off-screen (plane-fly-in) like it just arrived with the message, then settles and only
+   gives a small continuous wing-wobble in place — same "alive but not distracting" idea as the rocket. */
+#contact{position:relative;overflow:visible}
+.contact-plane{position:absolute;bottom:2rem;left:2%;width:64px;height:auto;pointer-events:none;z-index:1;
+  animation:plane-fly-in 1.3s ease-out .4s both}
+.plane-fly{transform-box:view-box;transform-origin:center;animation:plane-fly 3.6s ease-in-out infinite}
+@keyframes plane-fly{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(-6px,-6px) rotate(-4deg)}}
+/* one-time entrance: flies in from off-screen bottom-left into resting position */
+@keyframes plane-fly-in{from{opacity:0;transform:translate(-80px,80px) rotate(-18deg)}to{opacity:1;transform:translate(0,0) rotate(0deg)}}
 #contact h2{font-size:clamp(2.8rem,10vw,9rem)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
 .links{list-style:none;padding:0;margin:0 0 2rem}
 .links li{border-bottom:1px solid rgba(17,17,17,.25);padding:.8rem 0;font:700 1.3rem var(--display);font-stretch:115%}
-.links a{text-decoration:none;transition:color .2s}
+.links a{text-decoration:none;transition:color .2s;position:relative;display:inline-block;padding-right:1.5rem}
 .links a:hover{color:var(--accent)}
+/* a little arrow slides in from the left on hover, instead of just a colour change */
+.links a::after{content:"\2192";position:absolute;right:0;top:0;opacity:0;transform:translateX(-8px);transition:opacity .25s,transform .25s}
+.links a:hover::after{opacity:1;transform:translateX(0)}
 iframe{width:100%;height:340px;border:1px solid var(--ink);filter:grayscale(1) sepia(.35)}
 footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem var(--pad);background:var(--ink);color:var(--surface-dark);font:400 .8rem var(--label)}
 footer ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
 
-/* ===== 12. MOTION (one hero moment only) ===== */
-@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+/* ===== 12. MOTION ===== */
+/* shared one-time settle-in for the owl and robot (the rocket and plane have their own, bigger entrances above) */
+@keyframes creature-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== 12b. SCROLL PROGRESS BAR =====
+   A thin accent-coloured bar at the very top that fills left-to-right as you scroll the page.
+   Uses the new CSS scroll-driven animations (animation-timeline: scroll(root)); where that isn't
+   supported yet, @supports keeps it a harmless 0-width sliver instead of breaking anything. */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--accent);
+  transform:scaleX(0);transform-origin:0 50%;z-index:50;pointer-events:none}
+@supports (animation-timeline: scroll(root)){
+  .scroll-progress{animation:progress-fill linear;animation-timeline:scroll(root)}
+}
+@keyframes progress-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ===== 12c. SCROLL REVEAL =====
+   Headings and content blocks marked .reveal fade/rise into place as they enter the viewport.
+   Default state is fully visible (opacity:1) so nothing is ever hidden if a browser doesn't support
+   this; @supports only switches on the animation itself where the browser can run it. */
+.reveal{opacity:1}
+@supports (animation-timeline: view()){
+  .reveal{
+    opacity:0;
+    animation:reveal-up linear both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 30%;
+  }
+}
+@keyframes reveal-up{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important} /* don't leave content stuck at opacity:0 */
+}
 
 /* ===== 13. RESPONSIVE ===== */
 @media (max-width:900px){
@@ -165,4 +262,38 @@ footer ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
   .skills-grid,.facts{grid-template-columns:1fr}
   .pill{padding:.5rem .9rem}
   .logo{width:100%}
+  /* smaller on small screens, keeping each one's own relative size */
+  .edu-owl{width:42px}
+  .skills-bot{width:56px}
+  .projects-rocket{width:60px}
+  .contact-plane{width:46px}
+  /* the map doesn't need to be as tall on a phone screen */
+  iframe{height:240px}
+}
+
+/* ===== 13b. TABLET REFINEMENT (between phone and full desktop) =====
+   900px already switches to the stacked phone layout; this smooths things out for tablets
+   sitting between ~901px and 1180px (iPads, small laptops) so the desktop layout doesn't feel
+   cramped right before it flips. */
+@media (max-width:1180px) and (min-width:901px){
+  .project .info{padding-left:.5rem}
+  #hero h1{font-size:clamp(3rem,11vw,8rem)}
+  .skills-grid{grid-template-columns:repeat(2,1fr)} /* 3 columns gets tight on a tablet; 2 reads better */
+}
+
+/* ===== 13c. VERY SMALL PHONES (older/compact devices, roughly 320–400px wide) ===== */
+@media (max-width:400px){
+  :root{--pad:1rem}
+  #hero h1{font-size:14vw} /* the clamp() elsewhere can still run a touch wide at this size */
+  .btn,.pill{padding:.55rem 1rem;font-size:.72rem}
+  .hero-text p{font-size:1.05rem}
+  .tags li{font-size:.68rem}
+  iframe{height:210px}
+}
+
+/* ===== 13d. VERY LARGE SCREENS (wide monitors, ultra-wide) =====
+   Content already uses clamp() for type sizes, which caps how big things get — this just keeps
+   side padding growing a little further so the page doesn't feel edge-to-edge on a huge screen. */
+@media (min-width:1700px){
+  :root{--pad:clamp(1.25rem,6vw,8rem)}
 }

@@ -17,6 +17,10 @@
 </head>
 <body>
 
+<!-- Scroll progress bar: fills left-to-right as you scroll the page. Pure CSS (animation-timeline: scroll());
+     on browsers that don't support that yet it just stays an invisible 0-width sliver, so it never breaks anything. -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
 <!-- ================= HEADER: logo (left) + navigation (right) ================= -->
 <header id="site-header">
   <a class="logo" href="#hero">My<span>Portfolio</span></a> <!-- REPLACE with Priyanshu -->
@@ -45,7 +49,8 @@
       <li>Computer Science student at IIITR</li>     <!-- REPLACE if different -->
       <li>Code, design, curiosity</li>      <!-- REPLACE -->
     </ul>
-    <h1>Priyanshu</h1>                      <!-- REPLACE -->
+    <!-- REPLACE "Priyanshu": keep one <span> per letter so each letter animates in with its own delay. aria-label carries the real name for screen readers/SEO since the letters are just visual pieces. -->
+    <h1 aria-label="Priyanshu"><span aria-hidden="true">P</span><span aria-hidden="true">r</span><span aria-hidden="true">i</span><span aria-hidden="true">y</span><span aria-hidden="true">a</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span></h1>
     <p>I build things for the web and I am learning something new every semester.</p>
     <a class="btn" href="#projects">Explore my portfolio</a>
     <a class="label scroll" href="#about">&darr; Scroll to read more</a>
@@ -94,11 +99,10 @@
   <div class="split">
     <div class="about-text">
       <p class="label">About me</p>
-      <h2>Hello, I am <span class="accent">Priyanshu.</span></h2>
+      <h2 class="reveal">Hello, I am <span class="accent">Priyanshu.</span></h2>
       <!-- REPLACE the biography below with your own words -->
-      <p class="lead">I am a first-year Computer Science student passionate about coding, cybersecurity, and exploring the world of technology, which inspires my nickname <strong>HackerX</strong>. I also love building hands-on electronic projects, experimenting with robotics, and turning creative ideas into real-world innovations.</p>
-      <p>This portfolio is my first full website, written by hand in HTML and CSS. <!-- This is a block-level paragraph; <strong>, <em> and <u> are inline elements --></p>
-      <div class="facts">
+      <p class="lead reveal">I am a first-year Computer Science student passionate about coding, cybersecurity, and exploring the world of technology, which inspires my nickname <strong>HackerX</strong>. I also love building hands-on electronic projects, experimenting with robotics, and turning creative ideas into real-world innovations.</p>
+      <div class="facts reveal">
         <div class="fact">
           <h3>Currently studying</h3>
           <p>Computer Science, Indian Institute Of Information Technology Raichur</p> <!-- REPLACE -->
@@ -123,9 +127,30 @@
 
 <!-- ================= SECTION 03: EDUCATION (HTML table) ================= -->
 <section id="education">
+  <!-- Decorative owl in a graduation cap (same flat ink + orange style). Safe to delete. -->
+  <svg class="edu-owl" viewBox="0 0 120 150" aria-hidden="true" focusable="false">
+    <g class="owl-sway">
+      <line x1="0" y1="92" x2="34" y2="92" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="30" cy="100" rx="6" ry="9" fill="#111111"/>
+      <ellipse cx="46" cy="100" rx="6" ry="9" fill="#111111"/>
+      <ellipse cx="60" cy="88" rx="34" ry="40" fill="#111111"/>
+      <ellipse cx="60" cy="96" rx="17" ry="23" fill="#D0C7BB"/>
+      <path d="M38 36 L46 58 L58 40Z" fill="#111111"/>
+      <path d="M82 36 L74 58 L62 40Z" fill="#111111"/>
+      <circle cx="60" cy="54" r="30" fill="#111111"/>
+      <circle cx="48" cy="50" r="13" fill="#D0C7BB"/>
+      <circle cx="72" cy="50" r="13" fill="#D0C7BB"/>
+      <circle class="owl-eye" cx="48" cy="50" r="6" fill="#111111"/>
+      <circle class="owl-eye" cx="72" cy="50" r="6" fill="#111111"/>
+      <path d="M57 60 L60 67 L63 60Z" fill="#D94313"/>
+      <path d="M26 28 L94 28 L60 14Z" fill="#111111"/>
+      <rect x="57" y="26" width="6" height="4" fill="#111111"/>
+      <path d="M90 28 L98 40 L84 42Z" fill="#D94313"/>
+    </g>
+  </svg>
   <p class="label">Education</p>
-  <h2>Where I have <span class="accent">studied.</span></h2>
-  <div class="table-wrap">
+  <h2 class="reveal">Where I have <span class="accent">studied.</span></h2>
+  <div class="table-wrap reveal">
     <table>
       <caption>My education so far.</caption>
       <thead>
@@ -168,8 +193,8 @@
 <!-- ================= SECTION 04: SKILLS & INTERESTS ================= -->
 <section id="skills">
   <p class="label">Skills and interests</p>
-  <h2>What I use and <span class="accent">what next.</span></h2>
-  <div class="skills-grid">
+  <h2 class="reveal">What I use and <span class="accent">what next.</span></h2>
+  <div class="skills-grid reveal">
     <!-- Unordered lists. Edit, add or delete <li> items. No skill levels are claimed. -->
     <div class="skill-box">
       <h3>Technical</h3>
@@ -197,7 +222,7 @@
     </div>
   </div>
   <!-- Ordered list: my learning routine is a real sequence of steps -->
-  <div class="learn">
+  <div class="learn reveal">
     <h3>How I learn something new</h3>
     <ol>
       <li>Read the idea in the course notes or a tutorial.</li>
@@ -210,11 +235,23 @@
 
 <!-- ================= SECTION 05: PROJECTS (editorial layout) ================= -->
 <section id="projects">
+  <!-- Decorative rocket, same flat ink + orange style. Safe to delete. -->
+  <svg class="projects-rocket" viewBox="0 0 110 170" aria-hidden="true" focusable="false">
+    <g class="rocket-float">
+      <path d="M55 10 Q78 40 78 85 L32 85 Q32 40 55 10Z" fill="#111111"/>
+      <circle cx="55" cy="60" r="12" fill="#D0C7BB"/>
+      <path d="M32 85 L14 115 L32 108Z" fill="#111111"/>
+      <path d="M78 85 L96 115 L78 108Z" fill="#111111"/>
+      <rect x="32" y="85" width="46" height="18" fill="#111111"/>
+      <path class="rocket-flame" d="M44 103 Q55 140 66 103 Q55 118 44 103Z" fill="#D94313"/>
+      <path class="rocket-flame-inner" d="M49 103 Q55 126 61 103 Q55 112 49 103Z" fill="#f3b48a"/>
+    </g>
+  </svg>
   <p class="label">Selected work</p>
-  <h2>Things I have <span class="accent">made.</span></h2>
+  <h2 class="reveal">Things I have <span class="accent">made.</span></h2>
   <!-- All three projects are PLACEHOLDERS. Replace titles, text, images and links. -->
 
-  <article class="project">
+  <article class="project reveal">
     <figure class="frame"><img src="images/project1.png" alt="Placeholder artwork for project one"></figure>
     <div class="info">
       <p class="label"><span class="status">Status: Completed</span> |    Website</p>
@@ -224,7 +261,7 @@
     </div>
   </article>
 
-  <article class="project flip">
+  <article class="project flip reveal">
     <figure class="frame"><img src="images/project2.png" alt="Placeholder artwork for project two"></figure>
     <div class="info">
       <p class="label"><span class="status">Status: Completed</span> | Software</p>
@@ -234,7 +271,7 @@
     </div>
   </article>
 
-  <article class="project offset">
+  <article class="project offset reveal">
     <figure class="frame"><img src="images/project3.svg" alt="Placeholder artwork for project three"></figure>
     <div class="info">
       <p class="label"><span class="status">Status: [Idea]</span> | Game(Software)</p>
@@ -248,8 +285,8 @@
 <!-- ================= SECTION 06: BEYOND THE SCREEN ================= -->
 <section id="beyond">
   <p class="label">Beyond the screen</p>
-  <img src="images/photograph.jpg" alt="Black camera silhouette with an orange light, standing for my creative interests">
-  <h2>I look up from the code.</h2>
+  <img class="reveal" src="images/photograph.jpg" alt="Black camera silhouette with an orange light, standing for my creative interests">
+  <h2 class="reveal">I look up from the code.</h2>
   <p>Photography is more than just a hobby for me; it's a way of capturing stories, emotions, and little details that often go unnoticed. I love exploring different perspectives, playing with light, and turning ordinary moments into memorable frames. I’m also a proud part of <strong>Shutter Squad</strong>, the photography team under the <strong>PR Council at IIIT Raichur</strong>, where I get to learn, create, and share my passion with like-minded people.</p>
   <ul class="interests">
   </ul>
@@ -257,9 +294,19 @@
 
 <!-- ================= SECTION 07: CONTACT ================= -->
 <section id="contact">
+  <!-- Decorative paper airplane, same flat ink + orange style. Safe to delete. -->
+  <svg class="contact-plane" viewBox="0 0 160 110" aria-hidden="true" focusable="false">
+    <path class="plane-trail" d="M4 96 Q50 92 94 70" fill="none" stroke="#111111" stroke-width="2.5"
+      stroke-dasharray="1 10" stroke-linecap="round" opacity=".5"/>
+    <g class="plane-fly">
+      <path d="M150 20 L30 56 L66 66 Z" fill="#111111"/>
+      <path d="M150 20 L66 66 L80 96 Z" fill="#111111"/>
+      <path d="M150 20 L66 66 L95 60 Z" fill="#D94313"/>
+    </g>
+  </svg>
   <p class="label">Contact</p>
-  <h2>Let's build <span class="accent">something.</span></h2>
-  <div class="contact-grid">
+  <h2 class="reveal">Let's build <span class="accent">something.</span></h2>
+  <div class="contact-grid reveal">
     <div>
       <ul class="links">
         <!-- REPLACE every href below with your real details -->
