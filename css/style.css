@@ -249,10 +249,21 @@ footer ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
 }
 
 /* ===== 13. RESPONSIVE ===== */
+/* ===== 13a. HERO ON NARROW/MOBILE SCREENS =====
+   Chrome's "Desktop site" toggle usually reports a fake width of ~980px, which used to slip past
+   the old 900px breakpoint — so the character stayed as a full-opacity absolute layer sitting
+   right behind the heading and nav. This block now covers up to 1024px (catching that forced
+   "desktop" width too) and, more importantly, stops stacking the image BEHIND the text at all:
+   it becomes a normal, capped-height image stacked ABOVE the text in the regular page flow, so
+   overlap simply isn't possible, whether "Desktop site" is on or off. */
+@media (max-width:1024px){
+  #hero{display:flex;flex-direction:column;padding-top:8.5rem;min-height:auto}
+  .hero-photo{position:relative;inset:auto;margin:0 auto 1.5rem;width:min(60vw,260px);
+    aspect-ratio:3/4;opacity:1}
+  .hero-photo img{width:100%;height:100%;object-fit:contain}
+  #hero h1{mix-blend-mode:normal;font-size:clamp(3rem,13vw,6rem)}
+}
 @media (max-width:900px){
-  #hero{display:flex;flex-direction:column;justify-content:flex-end;padding-top:9rem;min-height:90vh}
-  .hero-photo{inset:0 0 0 20%;opacity:.55}
-  #hero h1{mix-blend-mode:normal}
   .split,.contact-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr 1fr}
   .project{display:block}
